@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "5e1256ce-db3c-4c38-b900-f5bcc903a261",
+		"name": "Metricalo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "879478"
+	},
+	"item": [
+		{
+			"name": "ACI Payment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": 92.00,\n    \"currency\": \"EUR\",\n    \"card_number\": \"4200000000000000\",\n    \"card_exp_year\": \"2034\",\n    \"card_exp_month\": \"05\",\n    \"card_cvv\": \"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/payment/process/aci",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"payment",
+						"process",
+						"aci"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Shif4 Payment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": 100.00,\n    \"currency\": \"USD\",\n    \"card_number\": \"4012000100000007\",\n    \"card_exp_year\": \"2035\",\n    \"card_exp_month\": \"05\",\n    \"card_cvv\": \"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/payment/process/shift4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"payment",
+						"process",
+						"shift4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

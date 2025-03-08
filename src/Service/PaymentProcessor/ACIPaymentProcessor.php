@@ -13,7 +13,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 class ACIPaymentProcessor implements PaymentProcessorInterface
 {
     private HttpClientInterface $httpClient;
-    private string $apiKey='OGFjN2E0Yzc5Mzk0YmRjODAxOTM5NzM2ZjFhNzA2NDF8enlac1lYckc4QXk6bjYzI1NHNng=';
+    private string $authKey='OGFjN2E0Yzc5Mzk0YmRjODAxOTM5NzM2ZjFhNzA2NDF8enlac1lYckc4QXk6bjYzI1NHNng=';
     private string $entityId='8ac7a4c79394bdc801939736f17e063d';
     private string $apiUrl='https://eu-test.oppwa.com/v1/payments';
 
@@ -32,7 +32,7 @@ class ACIPaymentProcessor implements PaymentProcessorInterface
     public function processPayment(PaymentRequestDTO $paymentRequest): array
     {
         $headers = [
-            'Authorization' => 'Bearer ' . $this->apiKey,
+            'Authorization' => 'Bearer ' . $this->authKey,
         ];
 
         $requestData = [
@@ -59,8 +59,8 @@ class ACIPaymentProcessor implements PaymentProcessorInterface
             return [
                 'transactionId' => $data['id'],
                 'dateOfCreating' => $data['timestamp'],
-                'amount' => $data['amount'],
-                'currency' => $data['currency'],
+                'amount' => $paymentRequest->getAmount(),
+                'currency' => $paymentRequest->getCurrency(),
                 'cardBin' => $data['card']['bin'],
             ];
         } catch (TransportExceptionInterface | ClientExceptionInterface | RedirectionExceptionInterface | ServerExceptionInterface | DecodingExceptionInterface $e) {
