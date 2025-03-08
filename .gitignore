@@ -8,3 +8,7 @@
 /vendor/
 /.idea
 /composer.lock
+###> phpunit/phpunit ###
+/phpunit.xml
+/.phpunit.cache/
+###< phpunit/phpunit ###

@@ -11,3 +11,6 @@ To test the endpoints, you can use the postman collection provided in the root d
 ## Testing Commands
 To test the commands, you can run the following commands:
 `bin/console app:process-payment` to process the payments
+
+## Running Tests Suite
+To run the unit tests, you can run the following command: `./vendor/bin/phpunit`

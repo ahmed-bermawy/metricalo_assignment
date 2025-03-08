@@ -8,16 +8,18 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-
 class HandlePayment
 {
-    public function __construct(private readonly HttpClientInterface $httpClient)
+    public function __construct(
+        private readonly HttpClientInterface $httpClient,
+        private readonly PaymentProcessorFactory $paymentProcessorFactory
+    )
     {
     }
 
     public function processPayment(string $provider, PaymentRequestDTO $paymentRequest): JsonResponse
     {
-        $paymentProcessor = PaymentProcessorFactory::create($provider, $this->httpClient);
+        $paymentProcessor = $this->paymentProcessorFactory->create($provider, $this->httpClient);
         $result = $paymentProcessor->processPayment($paymentRequest);
 
         if (isset($result['error'])) {

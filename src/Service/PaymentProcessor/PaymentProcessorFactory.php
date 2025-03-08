@@ -7,7 +7,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class PaymentProcessorFactory
 {
-    public static function create(string $type, HttpClientInterface $httpClient): PaymentProcessorInterface
+    public function create(string $type, HttpClientInterface $httpClient): PaymentProcessorInterface
     {
         return match ($type) {
             'shift4' => new Shift4PaymentProcessor($httpClient),
