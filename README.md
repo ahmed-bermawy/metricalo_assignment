@@ -14,3 +14,10 @@ To test the commands, you can run the following commands:
 
 ## Running Tests Suite
 To run the unit tests, you can run the following command: `./vendor/bin/phpunit`
+
+## Docker Setup
+Run `docker-compose up -d` to build the docker containers
+
+You can access the application using `http://localhost:8080`
+
+Access the container using `docker exec -it metricalo_assignment_web_1 bash`
