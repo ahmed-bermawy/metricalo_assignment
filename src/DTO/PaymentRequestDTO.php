@@ -33,7 +33,7 @@ class PaymentRequestDTO
 
     public function __construct($request)
     {
-        $payload = json_decode($request->getContent(), true);
+        $payload = is_array($request) ? $request : json_decode($request->getContent(), true);
         $this->amount = $payload['amount'];
         $this->currency = $payload['currency'];
         $this->cardNumber = $payload['card_number'];

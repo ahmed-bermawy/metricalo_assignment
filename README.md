@@ -8,4 +8,6 @@
 ## Testing Endpoints
 To test the endpoints, you can use the postman collection provided in the root directory of the project `Metricalo.postman_collection.json`
 
-
+## Testing Commands
+To test the commands, you can run the following commands:
+`bin/console app:process-payment` to process the payments
